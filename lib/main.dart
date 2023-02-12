@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'screens/products_overview_screen.dart';
+import 'screens/product_detail.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,30 +15,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: 'Lato',
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+            .copyWith(secondary: Colors.deepOrange),
       ),
-      home: const MyHomePage(title: 'Lets Build a shop'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({
-    super.key,
-    required this.title,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: title,
-      home: SafeArea(
-          child: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-      )),
+      home: ProducstOverviewScreen(),
+      routes: {
+        ProductDetailScreen.routeName:(context) => ProductDetailScreen(),
+      },
     );
   }
 }
